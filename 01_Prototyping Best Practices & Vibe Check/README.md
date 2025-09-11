@@ -37,15 +37,20 @@ You will be required to submit a link to your GitHub, as well as screenshots of 
 Please evaluate your system on the following questions:
 
 1. Explain the concept of object-oriented programming in simple terms to a complete beginner. 
-    - Aspect Tested:
+    - Aspect Tested: Being able to follow instructions. Generate explanations without hallucinations
+    - How did it perform: very well, explained everything in simple terms. Provided a well-structured output and tried to apply markdown
 2. Read the following paragraph and provide a concise summary of the key points…
-    - Aspect Tested:
+    - Aspect Tested: Summarization skills, without fabricating content
+    - How did it perform: Very well. Created a very concise summary that reflected the key points of the provided paragraph perfectly. 
 3. Write a short, imaginative story (100–150 words) about a robot finding friendship in an unexpected place.
-    - Aspect Tested:
+    - Aspect Tested: Creativity and instruction following
+    - How did it perform: Performed well. The story was not particularly moving but instead quite poetic. The story was 151 words, so it **almost** got the word count right. 
 4. If a store sells apples in packs of 4 and oranges in packs of 3, how many packs of each do I need to buy to get exactly 12 apples and 9 oranges?
-    - Aspect Tested:
+    - Aspect Tested: Reasoning and maths
+    - How did it perform: Performed well, gave a correct answer and figured out it needed to use code to come to the right answer. However, it did also output the code inline with the rest of the answer, which isn't expected behavior when using consumer chatbots
 5. Rewrite the following paragraph in a professional, formal tone…
-    - Aspect Tested:
+    - Aspect Tested: Writing skills and instruction following 
+    - How did it perform: Did exactly what it was asked to do, nothing more, nothing less. 
 
 This "vibe check" now serves as a baseline, of sorts, to help understand what holes your application has.
 
@@ -58,7 +63,10 @@ This "vibe check" now serves as a baseline, of sorts, to help understand what ho
 #### ❓Question #1:
 
 What are some limitations of vibe checking as an evaluation tool?
-##### ✅ Answer:
+##### ✅ Answer: 
+It is a qualitative check, useful to get the "pulse" of your application. It's good at checking whether on the surface the application is working as expected. In this case, is the LLM answering, is it using the right format, is the UI working as expected, are there any apparent bugs. 
+
+It is limited because it does not provide an in-depth look under the hood: we don't exactly know what is going on by just running a vibe check. If one of our checks would have failed, we wouldn't be able to debug just from running vibe checks. Instead we'd have to dive into the backend. 
 
 ### 🚧 Advanced Build (OPTIONAL):
 
@@ -68,14 +76,15 @@ Please make adjustments to your application that you believe will improve the vi
 
 #### 🏗️ Activity #1
 ##### Adjustments Made:
-- _describe adjustment(s) here_
+- Added token count and $ cost to any messaging session
+    - Session total tokens 
+    - Session total cost
+    - User / Assistant total tokens split between prompt, completion (response) and total
 
 ##### Results:
-1. _Comment here how the change(s) impacted the vibe check of your system_
-2. 
-3. 
-4. 
-5.
+1. Allows for better immediate visibility on performance
+2. Easier debugging when there's an issue: we can have a quick idea of the amount of tokens that were sent to the model. If we expect a big prompt to be sent but the token count is low, we know that something is getting lost in the middle
+3. Cost management
 
 
 ## Submitting Your Homework
